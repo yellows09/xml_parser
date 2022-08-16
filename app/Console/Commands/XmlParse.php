@@ -8,7 +8,6 @@ use App\Car;
 use App\Category;
 use App\Dealer;
 use App\Generation;
-use App\Model;
 use App\ModelCar;
 use App\Modification;
 use App\Services\ParseXML;
