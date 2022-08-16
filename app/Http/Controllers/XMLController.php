@@ -11,12 +11,15 @@ use App\Generation;
 use App\ModelCar;
 use App\Modification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class XMLController extends Controller
 {
-    public function parse($path_to_file)
+    public function parse(Request $request)
     {
-        $content = simplexml_load_file($path_to_file);
+        Log::info($request['xml_file']);
+        $temp = file_get_contents($request['xml_file']);
+        $content = simplexml_load_string($temp);
         foreach ($content as $c){
             Car::updateOrCreate([
                 'id' => $c->id,

@@ -2,18 +2,9 @@
 
 namespace App\Console\Commands;
 
-use App\BodyConfiguration;
-use App\Brand;
-use App\Car;
-use App\Category;
-use App\Dealer;
-use App\Generation;
-use App\ModelCar;
-use App\Modification;
 use App\Services\ParseXML;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Http;
 
 class XmlParse extends Command
 {
@@ -22,7 +13,7 @@ class XmlParse extends Command
      *
      * @var string
      */
-    protected $signature = 'xparse {path=defaultXmlFileForParses.xml}';
+    protected $signature = 'xparse {path?}';
 
     /**
      * The console command description.
@@ -42,16 +33,22 @@ class XmlParse extends Command
     }
 
     /**
+     * @return string
+     */
+    public function getDefaultPath(): string
+    {
+        return public_path('defaultXmlFileForParses.xml');
+    }
+    /**
      * Execute the console command.
      *
      * @return int
      */
     public function handle()
     {
-        if($this->argument('path') == 'defaultXmlFileForParses.xml'){
-            echo 'Вы не ввели путь до файла, запарсился xml пример' . PHP_EOL;
-            return 1;
+        if(!$this->argument('path')){
+            return ParseXML::makeRequest($this->getDefaultPath());
         }
-        echo ParseXML::makeRequest($this->argument('path'));
+        return ParseXML::makeRequest($this->argument('path'));
     }
 }

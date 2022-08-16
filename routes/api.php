@@ -14,4 +14,3 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/{path_to_xml}',[\App\Http\Controllers\XMLController::class,'parse']);

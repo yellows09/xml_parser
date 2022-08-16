@@ -9,8 +9,10 @@ class ParseXML
     public static function makeRequest($file)
     {
         try {
-            Http::get(env('APP_URL')."/api?path_to_xml={$file}");
-            return 'Парсинг успешно завершен!';
+            Http::get('http://localhost:8003/xml/parse',[
+                'xml_file' => $file
+            ]);
+            echo 'Парсинг успешно завершен!';
         }catch (\Exception $exception){
             return "Ошибка {$exception->getMessage()}";
         }
