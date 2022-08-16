@@ -47,6 +47,7 @@ class XmlParse extends Command
     public function handle()
     {
         if(!$this->argument('path')){
+            echo "Вы не ввели путь к файлу, парсится дефолтный файл...".PHP_EOL;
             return ParseXML::makeRequest($this->getDefaultPath());
         }
         return ParseXML::makeRequest($this->argument('path'));

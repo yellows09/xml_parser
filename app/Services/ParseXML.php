@@ -12,7 +12,7 @@ class ParseXML
             Http::get('http://localhost:8003/xml/parse',[
                 'xml_file' => $file
             ]);
-            echo 'Парсинг успешно завершен!';
+            echo 'Парсинг успешно завершен!'.PHP_EOL;
         }catch (\Exception $exception){
             return "Ошибка {$exception->getMessage()}";
         }
