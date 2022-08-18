@@ -15,7 +15,8 @@
         "laravel/framework": "^7.29",
         "laravel/tinker": "^2.5",
       "ext-simplexml": "*",
-        "ext-http": "*"
+        "ext-http": "*",
+      "ext-fileinfo": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

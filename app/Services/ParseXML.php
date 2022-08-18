@@ -3,17 +3,18 @@
 namespace App\Services;
 
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class ParseXML
 {
     public static function makeRequest($file)
     {
         try {
-            Http::get('http://localhost:8003/xml/parse',[
+            Http::get('http://localhost:8003/xml/parse', [
                 'xml_file' => $file
             ]);
-            echo 'Парсинг успешно завершен!'.PHP_EOL;
-        }catch (\Exception $exception){
+            echo 'Парсинг успешно завершен!' . PHP_EOL;
+        } catch (\Exception $exception) {
             return "Ошибка {$exception->getMessage()}";
         }
     }
