@@ -57,7 +57,7 @@ class XmlParse extends Command
             echo 'Идет парсинг...' . PHP_EOL;
             return ParseXML::makeRequest($this->argument('path'));
         } else {
-            die('Вы ввели неверный путь либо слишком большой файл!' . PHP_EOL);
+            die('Вы ввели неверный путь до xml файла либо слишком большой файл!' . PHP_EOL);
         }
     }
 }
